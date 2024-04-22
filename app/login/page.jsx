@@ -15,7 +15,6 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            setMessage("api")
             const response = await axios.post(`${apiBaseUrl}/auth/login`, {
                 email,
                 password
