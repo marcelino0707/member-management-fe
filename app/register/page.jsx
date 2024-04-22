@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios';
 
 export default function Register() {
+    const apiBaseUrl = process.env.NEXT_PUBLIC_APP_BE_API_BASE_URL;
     const router = useRouter()
     const [name, setName] = useState('');
     const [idCardNumber, setIdCardNumber] = useState('');
@@ -22,7 +23,7 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/register', {
+            const response = await axios.post(`${apiBaseUrl}/register`, {
                 name,
                 id_card_number: idCardNumber,
                 date_of_birth: dateOfBirth,

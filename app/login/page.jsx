@@ -5,6 +5,7 @@ import axios from 'axios';
 import { RiLoginBoxLine } from "react-icons/ri";
 
 export default function Login() {
+    const apiBaseUrl = process.env.NEXT_PUBLIC_APP_BE_API_BASE_URL;
     const router = useRouter()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +15,8 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/login', {
+            setMessage("api")
+            const response = await axios.post(`${apiBaseUrl}/auth/login`, {
                 email,
                 password
             })
